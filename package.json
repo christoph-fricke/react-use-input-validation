@@ -1,0 +1,45 @@
+{
+  "name": "use-input-validation",
+  "version": "1.0.0",
+  "author": "Christoph Fricke <christoph@frickeonline.de> (https://christoph-fricke.de)",
+  "description": "Validate your inputs easily with this react hook.",
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "React hook",
+    "input validation",
+    "validation"
+  ],
+  "main": "dist/index.js",
+  "typings": "typings/index.d.ts",
+  "files": [
+    "dist/*",
+    "typings/*"
+  ],
+  "scripts": {
+    "prepublishOnly": "babel ./src --out-dir ./dist",
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christoph-fricke/use-input-validation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/christoph-fricke/use-input-validation/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@testing-library/react-hooks": "^2.0.1",
+    "jest": "^24.9.0",
+    "react": "^16.9.0",
+    "react-test-renderer": "^16.9.0"
+  },
+  "dependencies": {
+    "@types/react": ">=16.9.2"
+  }
+}
