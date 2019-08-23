@@ -8,7 +8,7 @@
 
 ## Usage example
 
-```js
+```jsx
 import React from "react";
 import { useInputValidation } from "use-input-validation";
 
@@ -45,7 +45,7 @@ function Component(props) {
 
 ## Usage example for multiple inputs
 
-```js
+```jsx
 import React from "react";
 import { useInputValidation } from "use-input-validation";
 
