@@ -1,5 +1,13 @@
 import { useState, useCallback } from "react";
 
+interface InputValidation<V, E> {
+  value: V;
+  error: E | null;
+  setValue(update: V | ((prevValue: V) => V)): void;
+  validate(): boolean;
+  reset(): void;
+}
+
 /**
  * React hook for managing an input value and it's validation.
  * A provided hint is used as a return error if the validation fails.
@@ -16,7 +24,7 @@ export function useInputValidation<V, E>(
   initialValue: V,
   hint: E,
   validator: (value: V) => boolean
-) {
+): InputValidation<V, E> {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState<E | null>(null);
 
