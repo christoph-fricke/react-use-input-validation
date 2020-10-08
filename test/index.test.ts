@@ -34,7 +34,7 @@ describe("useInputValidation", () => {
     });
 
     it("should supply the previous value to an update function", () => {
-      const update = jest.fn().mockReturnValue("Test value")
+      const update = jest.fn().mockReturnValue("Test value");
       const { result } = renderHook(() =>
         useInputValidation("Initial", "Error hint", () => false)
       );
@@ -43,7 +43,7 @@ describe("useInputValidation", () => {
         result.current.setValue(update);
       });
 
-      expect(update).toBeCalledWith("Initial")
+      expect(update).toBeCalledWith("Initial");
       expect(result.current.value).toBe("Test value");
     });
 
@@ -112,7 +112,7 @@ describe("useInputValidation", () => {
     it("should uses the current value for validation", () => {
       const testValue = "Test value";
       const { result } = renderHook(() =>
-        useInputValidation("", "Error hint", (val) => val === testValue)
+        useInputValidation("", "Error hint", val => val === testValue)
       );
 
       act(() => {
