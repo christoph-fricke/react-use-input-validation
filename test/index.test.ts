@@ -33,6 +33,20 @@ describe("useInputValidation", () => {
       expect(result.current.value).toBe("Test value");
     });
 
+    it("should supply the previous value to an update function", () => {
+      const update = jest.fn().mockReturnValue("Test value")
+      const { result } = renderHook(() =>
+        useInputValidation("Initial", "Error hint", () => false)
+      );
+
+      act(() => {
+        result.current.setValue(update);
+      });
+
+      expect(update).toBeCalledWith("Initial")
+      expect(result.current.value).toBe("Test value");
+    });
+
     it("should not trigger a validation if the value is updated", () => {
       // Not typing the predicate causes TS to missinterpret the generic for V and
       // assuming that it is a string literal and not a string.
