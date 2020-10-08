@@ -1,7 +1,9 @@
 # use-input-validation
 
-[![GitHub issues](https://img.shields.io/github/issues/christoph-fricke/use-input-validation?style=flat-square)](https://github.com/christoph-fricke/use-input-validation/issues)
-[![GitHub license](https://img.shields.io/github/license/christoph-fricke/use-input-validation?style=flat-square)](https://github.com/christoph-fricke/use-input-validation/blob/master/LICENSE)
+[![GitHub issues](https://flat.badgen.net/github/issues/christoph-fricke/logging-library)](https://github.com/christoph-fricke/logging-library/issues)
+[![npm version](https://flat.badgen.net/npm/v/logging-library)](https://www.npmjs.com/package/logging-library)
+![Dependencies](https://flat.badgen.net/david/dep/christoph-fricke/logging-library)
+![BundleSize](https://flat.badgen.net/bundlephobia/minzip/logging-library)
 
 > useInputValidation is a React hook for validation inputs. It makes the
 > validation process easy and keeps your components clean.
