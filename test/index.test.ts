@@ -79,15 +79,31 @@ describe("useInputValidation", () => {
       expect(result.current.error).toBe(null);
     });
 
+    it("should use the predicate return value as error if it is not a boolean", () => {
+      const { result } = renderHook(() =>
+        useInputValidation("", "Error hint", () => "Dynamic information")
+      );
+      let valid;
+
+      act(() => {
+        valid = result.current.validate();
+      });
+
+      expect(valid).toBe(false);
+      expect(result.current.error).toBe("Dynamic information");
+    });
+
     it("should set the error if the predicate evaluates to false", () => {
       const { result } = renderHook(() =>
         useInputValidation("", "Error hint", () => false)
       );
+      let valid;
 
       act(() => {
-        result.current.validate();
+        valid = result.current.validate();
       });
 
+      expect(valid).toBe(false);
       expect(result.current.error).toBe("Error hint");
     });
 
@@ -96,6 +112,7 @@ describe("useInputValidation", () => {
       const { result } = renderHook(() =>
         useInputValidation("", "Error hint", predicate)
       );
+      let valid;
 
       act(() => {
         result.current.validate();
@@ -104,8 +121,10 @@ describe("useInputValidation", () => {
 
       predicate.mockReturnValue(true);
       act(() => {
-        result.current.validate();
+        valid = result.current.validate();
       });
+
+      expect(valid).toBe(true);
       expect(result.current.error).toBe(null);
     });
 
