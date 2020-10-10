@@ -131,7 +131,7 @@ describe("useInputValidation", () => {
     it("should uses the current value for validation", () => {
       const testValue = "Test value";
       const { result } = renderHook(() =>
-        useInputValidation("", "Error hint", (val) => val === testValue)
+        useInputValidation("", "Error hint", val => val === testValue)
       );
 
       act(() => {
