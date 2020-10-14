@@ -1,10 +1,15 @@
 import { useState, useCallback } from "react";
 
 interface InputValidation<V, E> {
+  /** Currently stored value. */
   value: V;
+  /** Currently evaluated error. Will be `null` initially or every time `validate` evaluates the `value` as valid. */
   error: E | null;
+  /** Sets a new value. Like `setState` from `useState` it also accepts a function in case you need the previous value. */
   setValue(update: V | ((prevValue: V) => V)): void;
+  /** Validates the current value and sets `error` depending in the validation result. */
   validate(): boolean;
+  /** Resets all internal state back to the initial values. */
   reset(): void;
 }
 
@@ -19,10 +24,10 @@ interface InputValidation<V, E> {
  * value is valid. It can either return a `boolean` or a _dynamic hint_ which will
  * be assigned to `error` and interpreted as `false`.
  *
- * @returns Return object contains the value, possible error
+ * @returns Return object contains the `value`, possible `error`
  * (null if no error is present) and functions to:
  * - set the `value`
- * - validate the value (possible sets the `error`)
+ * - validate the value (sets the `error` accordingly)
  * - reset the internal state
  */
 export function useInputValidation<V, E>(
