@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useDebugValue } from "react";
 
 interface InputValidation<V, E> {
   /** Currently stored value. */
@@ -49,6 +49,8 @@ export function useInputValidation<V, E>(
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState<E | null>(null);
   const [savePoint, setSavePoint] = useState(initialValue);
+
+  useDebugValue(value);
 
   const reset = useCallback(() => {
     setValue(savePoint);

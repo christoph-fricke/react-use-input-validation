@@ -171,7 +171,7 @@ describe("useInputValidation", () => {
   });
 
   describe("commit", () => {
-    it("should set the current value as a new baseline for reset", () => {
+    it("should set the current value as a new save point for reset", () => {
       const { result } = renderHook(() =>
         useInputValidation("Init", "Error hint", () => false)
       );
@@ -192,7 +192,7 @@ describe("useInputValidation", () => {
       expect(result.current.value).toBe("Changed");
     });
 
-    it("should use a provided state as a new baseline for reset", () => {
+    it("should use a provided state as a new save point for reset", () => {
       const { result } = renderHook(() =>
         useInputValidation("Init", "Error hint", () => false)
       );
