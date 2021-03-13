@@ -1,9 +1,9 @@
 # use-input-validation
 
-[![GitHub issues](https://flat.badgen.net/github/open-issues/christoph-fricke/use-input-validation)](https://github.com/christoph-fricke/use-input-validation/issues)
-[![npm version](https://flat.badgen.net/npm/v/use-input-validation)](https://www.npmjs.com/package/use-input-validation)
-![Dependencies](https://flat.badgen.net/david/dep/christoph-fricke/use-input-validation)
-![BundleSize](https://flat.badgen.net/bundlephobia/minzip/use-input-validation)
+[![GitHub issues](https://shields.io/github/issues-raw/christoph-fricke/use-input-validation?style=for-the-badge)](https://github.com/christoph-fricke/use-input-validation/issues)
+[![latest release](https://shields.io/github/v/release/christoph-fricke/use-input-validation?style=for-the-badge)](https://github.com/christoph-fricke/use-input-validation/releases/latest)
+![dependencies](https://shields.io/david/christoph-fricke/use-input-validation?style=for-the-badge)
+[![bundle size](https://shields.io/bundlephobia/minzip/use-input-validation?style=for-the-badge)](https://bundlephobia.com/result?p=use-input-validation)
 
 > `useInputValidation` is a React hook for validating inputs. It makes the
 > validation process easy and keeps your component logic clean.
