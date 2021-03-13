@@ -134,6 +134,7 @@ function useInputValidation<V, E>(
   setValue(update: V | ((prevValue: V) => V)): void;;
   validate(): boolean;
   reset(): void;
+  commit(state?: V): void;
 };
 ```
 

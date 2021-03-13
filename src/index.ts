@@ -55,9 +55,12 @@ export function useInputValidation<V, E>(
     setError(null);
   }, [savePoint]);
 
-  const commit = useCallback((state?: V) => {
-    setSavePoint(state ?? value);
-  }, [value])
+  const commit = useCallback(
+    (state?: V) => {
+      setSavePoint(state ?? value);
+    },
+    [value]
+  );
 
   const validate = useCallback(() => {
     const result = validator(value);
