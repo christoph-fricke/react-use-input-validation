@@ -155,7 +155,11 @@ function useInputValidation<V, E>(
 - setValue:
 - `validate`: Validates the current value and sets `error` depending in the
   validation result.
-- `reset`: Resets the value to the initial value and the error to `null`.
+- `commit`: Creates a save point for `reset`. The save point consists of the
+  current value or an optional, provided state. Later calling `reset` will reset
+  to the latest save point.
+- `reset`: Resets the value to the latest save point (equals the initial value
+  until `commit` is called) and the error to `null`.
 
 ## License
 

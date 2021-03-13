@@ -131,7 +131,7 @@ describe("useInputValidation", () => {
     it("should uses the current value for validation", () => {
       const testValue = "Test value";
       const { result } = renderHook(() =>
-        useInputValidation("", "Error hint", val => val === testValue)
+        useInputValidation("", "Error hint", (val) => val === testValue)
       );
 
       act(() => {
@@ -167,6 +167,45 @@ describe("useInputValidation", () => {
 
       expect(result.current.value).toBe("Init");
       expect(result.current.error).toBe(null);
+    });
+  });
+
+  describe("commit", () => {
+    it("should set the current value as a new baseline for reset", () => {
+      const { result } = renderHook(() =>
+        useInputValidation("Init", "Error hint", () => false)
+      );
+
+      act(() => {
+        result.current.setValue("Changed");
+        result.current.validate();
+      });
+
+      act(() => {
+        result.current.commit();
+      });
+
+      act(() => {
+        result.current.reset();
+      });
+
+      expect(result.current.value).toBe("Changed");
+    });
+
+    it("should use a provided state as a new baseline for reset", () => {
+      const { result } = renderHook(() =>
+        useInputValidation("Init", "Error hint", () => false)
+      );
+
+      act(() => {
+        result.current.commit("Changed");
+      });
+
+      act(() => {
+        result.current.reset();
+      });
+
+      expect(result.current.value).toBe("Changed");
     });
   });
 });

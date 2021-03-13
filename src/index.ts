@@ -9,8 +9,18 @@ interface InputValidation<V, E> {
   setValue(update: V | ((prevValue: V) => V)): void;
   /** Validates the current value and sets `error` depending in the validation result. */
   validate(): boolean;
-  /** Resets all internal state back to the initial values. */
+  /**
+   * Resets all internal state back to the save point created by `commit` or the
+   * initial state of no save point exists.
+   */
   reset(): void;
+  /**
+   * Save changes done to the value as a new save point. Calling `reset` will
+   * reset to this save point instead of the initial state.
+   * @param state Alternative value that should be used as a save point.
+   * Uses the current `value` if this argument is undefined.
+   */
+  commit(state?: V): void;
 }
 
 /**
@@ -29,6 +39,7 @@ interface InputValidation<V, E> {
  * - set the `value`
  * - validate the value (sets the `error` accordingly)
  * - reset the internal state
+ * - commit changes as a new save point for reset
  */
 export function useInputValidation<V, E>(
   initialValue: V,
@@ -37,11 +48,16 @@ export function useInputValidation<V, E>(
 ): InputValidation<V, E> {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState<E | null>(null);
+  const [savePoint, setSavePoint] = useState(initialValue);
 
   const reset = useCallback(() => {
-    setValue(initialValue);
+    setValue(savePoint);
     setError(null);
-  }, [initialValue]);
+  }, [savePoint]);
+
+  const commit = useCallback((state?: V) => {
+    setSavePoint(state ?? value);
+  }, [value])
 
   const validate = useCallback(() => {
     const result = validator(value);
@@ -58,5 +74,5 @@ export function useInputValidation<V, E>(
     }
   }, [validator, staticHint, value]);
 
-  return { value, error, setValue, validate, reset };
+  return { value, error, setValue, validate, reset, commit };
 }
