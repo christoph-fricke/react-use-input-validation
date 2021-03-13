@@ -1,6 +1,6 @@
 {
   "name": "use-input-validation",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Christoph Fricke <christoph@frickeonline.de> (https://christoph-fricke.de)",
   "description": "Validate your inputs easily with this react hook.",
   "license": "MIT",
