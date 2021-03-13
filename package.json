@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "prepublishOnly": "tsdx build",
+    "postversion": "git push && git push --tags",
     "build": "tsdx build",
     "test": "tsdx test",
     "test:watch": "tsdx test --watch",
